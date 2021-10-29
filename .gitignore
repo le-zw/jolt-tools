@@ -1,0 +1,45 @@
+# Mac
+.DS_Store
+
+backend/log/*
+log/*
+*.detaillog
+
+# Maven
+target
+
+# Gradle
+build/
+.gradle
+gradle/tools
+
+# Eclipse
+.metadata
+.checkstyle
+.classpath
+.pmd
+.project
+.ruleset
+.settings
+.pydevproject
+bin
+test-output
+*.log
+*.log.[0-9]*
+*-dev.properties
+*-local.properties
+log/*
+
+# IntelliJ IDEA
+*.i??
+.idea
+!*.ico
+
+# VSCode
+.vscode
+.factorypath
+.meghanada
+
+# Others
+LOG_FILE_IS_UNDEFINED*
+application-local1.properties
