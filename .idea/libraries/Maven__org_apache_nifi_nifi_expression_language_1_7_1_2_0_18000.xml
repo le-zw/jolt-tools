@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.nifi:nifi-expression-language:1.7.1-2.0_18000">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/nifi/nifi-expression-language/1.7.1-2.0_18000/nifi-expression-language-1.7.1-2.0_18000.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/nifi/nifi-expression-language/1.7.1-2.0_18000/nifi-expression-language-1.7.1-2.0_18000-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/nifi/nifi-expression-language/1.7.1-2.0_18000/nifi-expression-language-1.7.1-2.0_18000-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

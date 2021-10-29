@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SettingsStorage">
+    <option name="infoConfig">
+      <InfoConfig>
+        <option name="author" value="作者" />
+        <option name="controllerPackage" value="controller" />
+        <option name="implPackage" value="service/impl" />
+        <option name="servicePackage" value="service" />
+      </InfoConfig>
+    </option>
+    <option name="templateConfigList">
+      <map>
+        <entry key="INTRICACY">
+          <value>
+            <TemplateConfig>
+              <option name="controllerTemplate" value="package  ${package};&#13;&#10;&#13;&#10;import ${servicePackage}.${fileName}Service;&#13;&#10;&#13;&#10;import org.springframework.beans.factory.annotation.Autowired;&#13;&#10;import org.springframework.web.bind.annotation.GetMapping;&#13;&#10;import org.springframework.web.bind.annotation.PostMapping;&#13;&#10;import org.springframework.web.bind.annotation.RequestMapping;&#13;&#10;import org.springframework.web.bind.annotation.RestController;&#13;&#10;&#13;&#10;/**&#13;&#10; * https://tjxcold.chsgw.com 快速生成个人模板&#13;&#10; * @Author: ${author}&#13;&#10; * @Description: 描述&#13;&#10; * @Date: 创建于${time}&#13;&#10; **/&#13;&#10;@RestController&#13;&#10;@RequestMapping(&quot;/${fileName}&quot;)&#13;&#10;public class ${fileName}Controller{&#13;&#10;&#13;&#10;&#13;&#10;    @Autowired&#13;&#10;    private ${fileName}Service ${fileName.toLowerCaseFirstOne()}Service;&#13;&#10;&#13;&#10;&#13;&#10;    @GetMapping(&quot;/list&quot;)&#13;&#10;    public Object list() {&#13;&#10;        return ${fileName.toLowerCaseFirstOne()}Service.list();&#13;&#10;    }&#13;&#10;&#13;&#10;&#13;&#10;    @PostMapping(&quot;/change&quot;)&#13;&#10;    public Object change() {&#13;&#10;        return ${fileName.toLowerCaseFirstOne()}Service.change();&#13;&#10;    }&#13;&#10;&#13;&#10;&#13;&#10;    @PostMapping(&quot;/delete&quot;)&#13;&#10;    public Object delete(int id) {&#13;&#10;        return ${fileName.toLowerCaseFirstOne()}Service.delete(id);&#13;&#10;    }&#13;&#10;&#13;&#10;&#13;&#10;}&#13;&#10;" />
+              <option name="implTemplate" value="package ${package};&#13;&#10;&#13;&#10;import ${servicePackage}.${fileName}Service;&#13;&#10;import org.springframework.stereotype.Service;&#13;&#10;&#13;&#10;/**&#13;&#10; * @Author: ${author}&#13;&#10; * @Description: 描述&#13;&#10; * @Date:  创建于${time}&#13;&#10; **/&#13;&#10;@Service&#13;&#10;public class ${fileName}ServiceImpl implements ${fileName}Service {&#13;&#10;&#13;&#10;    @Override&#13;&#10;    public Object list() {&#13;&#10;        return null;&#13;&#10;    }&#13;&#10;&#13;&#10;    @Override&#13;&#10;    public Object change() {&#13;&#10;        return null;&#13;&#10;    }&#13;&#10;&#13;&#10;    @Override&#13;&#10;    public Object delete(int id) {&#13;&#10;        return null;&#13;&#10;    }&#13;&#10;&#13;&#10;}&#13;&#10;" />
+              <option name="serviceTemplate" value="package ${package};&#13;&#10;&#13;&#10;import org.springframework.stereotype.Service;&#13;&#10;&#13;&#10;/**&#13;&#10; * @Author: ${author}&#13;&#10; * @Description:&#13;&#10; * @Date: 创建于${time}&#13;&#10; **/&#13;&#10;@Service&#13;&#10;public interface ${fileName}Service {&#13;&#10;&#13;&#10;    /**&#13;&#10;     * 列表&#13;&#10;     *&#13;&#10;     * @return&#13;&#10;     */&#13;&#10;    Object list();&#13;&#10;&#13;&#10;&#13;&#10;    /**&#13;&#10;     * 修改/新增&#13;&#10;     *&#13;&#10;     * @return 用户id&#13;&#10;     */&#13;&#10;    Object change();&#13;&#10;&#13;&#10;&#13;&#10;    /**&#13;&#10;     * 删除&#13;&#10;     *&#13;&#10;     * @param id&#13;&#10;     * @return&#13;&#10;     */&#13;&#10;     Object delete(int id);&#13;&#10;}&#13;&#10;" />
+            </TemplateConfig>
+          </value>
+        </entry>
+        <entry key="SIMPLE">
+          <value>
+            <TemplateConfig>
+              <option name="controllerTemplate" value="package ${package};&#13;&#10;&#13;&#10;import ${servicePackage}.${fileName}Service;&#13;&#10;import org.springframework.beans.factory.annotation.Autowired;&#13;&#10;import org.springframework.web.bind.annotation.RequestMapping;&#13;&#10;import org.springframework.web.bind.annotation.RestController;&#13;&#10;&#13;&#10;/**&#13;&#10; * https://tjxcold.chsgw.com 快速生成个人模板&#13;&#10; * @Author: ${author}&#13;&#10; * @Description: 描述&#13;&#10; * @Date: 创建于${time}&#13;&#10; **/&#13;&#10;@RestController&#13;&#10;@RequestMapping(&quot;/${fileName}&quot;)&#13;&#10;public class ${fileName}Controller {&#13;&#10;&#13;&#10;    @Autowired&#13;&#10;    private ${fileName}Service ${fileName.toLowerCaseFirstOne()}Service;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;}&#13;&#10;" />
+              <option name="implTemplate" value="package ${package};&#13;&#10;&#13;&#10;import ${servicePackage}.${fileName}Service;&#13;&#10;import org.springframework.stereotype.Service;&#13;&#10;&#13;&#10;/**&#13;&#10; * @Author: ${author}&#13;&#10; * @Description: 描述&#13;&#10; * @Date: 创建于${time}&#13;&#10; **/&#13;&#10;@Service&#13;&#10;public class ${fileName}ServiceImpl implements ${fileName}Service {&#13;&#10;}&#13;&#10;" />
+              <option name="serviceTemplate" value="package ${package};&#13;&#10;&#13;&#10;/**&#13;&#10;* @Author: ${author}&#13;&#10;* @Description: 描述&#13;&#10;* @Date: 创建于${time}&#13;&#10;**/&#13;&#10;public interface ${fileName}Service {&#13;&#10;}&#13;&#10;" />
+            </TemplateConfig>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

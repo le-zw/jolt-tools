@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6096cf18-ae78-4349-9b72-3646681bcbee" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="D:/workspace/MilkGlass" value="PREVIEW" />
+        <entry key="D:/workspace/VrrDepartureMonitor" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="1zGL0kmEJfAz3lSjy9VoLucPAGg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/image" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.5367816" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lezw.util" />
+      <recent name="com.lezw.transformjson" />
+      <recent name="com.lezw.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/image" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/lezw/transformjson/dto" />
+      <recent name="$PROJECT_DIR$/src/main/resources/css" />
+      <recent name="$PROJECT_DIR$/src/main/resources/fxml" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lezw.App" />
+      <module name="jolt-tools" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lezw.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="lzw" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lezw.util.lzw" />
+      <module name="jolt-tools" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lezw.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+        <item itemvalue="Application.lzw" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6096cf18-ae78-4349-9b72-3646681bcbee" name="Default Changelist" comment="" />
+      <created>1633769256510</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633769256510</updated>
+      <workItem from="1633769257802" duration="4094000" />
+      <workItem from="1633916105252" duration="8642000" />
+      <workItem from="1633931806872" duration="27333000" />
+      <workItem from="1634088514113" duration="2812000" />
+      <workItem from="1634093065131" duration="25341000" />
+      <workItem from="1634191846469" duration="7425000" />
+      <workItem from="1634199868098" duration="20589000" />
+      <workItem from="1634808785465" duration="1747000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="581" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1634096300877">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="581" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.960@0.0.1536.960" timestamp="1634096300877" />
+    <state x="506" y="231" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1634286922751">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="506" y="231" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.960@0.0.1536.960" timestamp="1634286922751" />
+    <state x="506" y="231" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1633919021728">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="506" y="231" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.960@0.0.1536.960" timestamp="1633919021728" />
+    <state width="1494" height="230" key="GridCell.Tab.0.bottom" timestamp="1634810622359">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="1494" height="230" key="GridCell.Tab.0.bottom/0.0.1536.960@0.0.1536.960" timestamp="1634810622359" />
+    <state width="1878" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562928" />
+    <state width="1494" height="265" key="GridCell.Tab.0.bottom/0.25.1536.846@0.25.1536.846" timestamp="1634283205974" />
+    <state width="1494" height="265" key="GridCell.Tab.0.bottom/0.25.1536.849@0.25.1536.849" timestamp="1633941931002" />
+    <state width="1494" height="265" key="GridCell.Tab.0.bottom/0.25.1536.851@0.25.1536.851" timestamp="1633942088764" />
+    <state width="1494" height="230" key="GridCell.Tab.0.center" timestamp="1634810622357">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="1494" height="230" key="GridCell.Tab.0.center/0.0.1536.960@0.0.1536.960" timestamp="1634810622357" />
+    <state width="1878" height="265" key="GridCell.Tab.0.center/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562927" />
+    <state width="1494" height="265" key="GridCell.Tab.0.center/0.25.1536.846@0.25.1536.846" timestamp="1634283205972" />
+    <state width="1494" height="265" key="GridCell.Tab.0.center/0.25.1536.849@0.25.1536.849" timestamp="1633941931001" />
+    <state width="1494" height="265" key="GridCell.Tab.0.center/0.25.1536.851@0.25.1536.851" timestamp="1633942088762" />
+    <state width="1494" height="230" key="GridCell.Tab.0.left" timestamp="1634810622357">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="1494" height="230" key="GridCell.Tab.0.left/0.0.1536.960@0.0.1536.960" timestamp="1634810622357" />
+    <state width="1878" height="265" key="GridCell.Tab.0.left/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562926" />
+    <state width="1494" height="265" key="GridCell.Tab.0.left/0.25.1536.846@0.25.1536.846" timestamp="1634283205971" />
+    <state width="1494" height="265" key="GridCell.Tab.0.left/0.25.1536.849@0.25.1536.849" timestamp="1633941931000" />
+    <state width="1494" height="265" key="GridCell.Tab.0.left/0.25.1536.851@0.25.1536.851" timestamp="1633942088761" />
+    <state width="1494" height="230" key="GridCell.Tab.0.right" timestamp="1634810622358">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="1494" height="230" key="GridCell.Tab.0.right/0.0.1536.960@0.0.1536.960" timestamp="1634810622358" />
+    <state width="1878" height="265" key="GridCell.Tab.0.right/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562928" />
+    <state width="1494" height="265" key="GridCell.Tab.0.right/0.25.1536.846@0.25.1536.846" timestamp="1634283205973" />
+    <state width="1494" height="265" key="GridCell.Tab.0.right/0.25.1536.849@0.25.1536.849" timestamp="1633941931001" />
+    <state width="1494" height="265" key="GridCell.Tab.0.right/0.25.1536.851@0.25.1536.851" timestamp="1633942088763" />
+    <state width="747" height="328" key="GridCell.Tab.1.bottom" timestamp="1634810622351">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="747" height="328" key="GridCell.Tab.1.bottom/0.0.1536.960@0.0.1536.960" timestamp="1634810622351" />
+    <state width="1494" height="328" key="GridCell.Tab.1.bottom/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562918" />
+    <state width="747" height="328" key="GridCell.Tab.1.center" timestamp="1634810622351">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="747" height="328" key="GridCell.Tab.1.center/0.0.1536.960@0.0.1536.960" timestamp="1634810622351" />
+    <state width="1494" height="328" key="GridCell.Tab.1.center/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562917" />
+    <state width="747" height="328" key="GridCell.Tab.1.left" timestamp="1634810622350">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="747" height="328" key="GridCell.Tab.1.left/0.0.1536.960@0.0.1536.960" timestamp="1634810622350" />
+    <state width="1494" height="328" key="GridCell.Tab.1.left/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562916" />
+    <state width="747" height="328" key="GridCell.Tab.1.right" timestamp="1634810622351">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="747" height="328" key="GridCell.Tab.1.right/0.0.1536.960@0.0.1536.960" timestamp="1634810622351" />
+    <state width="1494" height="328" key="GridCell.Tab.1.right/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562918" />
+    <state x="306" y="139" key="Maven.ArtifactSearchDialog" timestamp="1634005448602">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="306" y="139" key="Maven.ArtifactSearchDialog/0.0.1536.960@0.0.1536.960" timestamp="1634005448602" />
+    <state x="277" y="116" key="SettingsEditor" timestamp="1634002423891">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="277" y="116" key="SettingsEditor/0.0.1536.960@0.0.1536.960" timestamp="1634002423891" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1634285307569">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1536.960@0.0.1536.960" timestamp="1634285307569" />
+    <state x="620" y="397" key="VCS.ChangelistChooser" timestamp="1634007878767">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="620" y="397" key="VCS.ChangelistChooser/0.0.1536.960@0.0.1536.960" timestamp="1634007878767" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lezw/transformjson/TransformJSONResource.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lezw/transformjson/TransformJSONResource.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/nifi/nifi-standard-utils/1.14.0/nifi-standard-utils-1.14.0-sources.jar!/org/apache/nifi/processors/standard/util/jolt/TransformFactory.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
