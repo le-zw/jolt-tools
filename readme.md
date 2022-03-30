@@ -1,26 +1,28 @@
-![下载 (5)](https://gitee.com/lezww/le.zw/raw/master/img/icon.png)
+# Dev-Tools
 
-# Jolt-Tools 
+基于 NiFi-1.7 版本开发的  Jolt 和 Script 调试工具，默认打包成 Mac APP，如果需要 Windows 版本 ，可自行修改POM文件。软件界面如下图（支持定义 NiFi 流文件属性和 NiFi 表达式）:
 
-基于 NiFi-1.7 版本开发的 Jolt 工具，默认打包成 Mac APP，如果需要 Windows 版本 ，可自行修改POM文件。软件界面如下图（支持定义 NiFi 流文件属性和 NiFi 表达式）:
++ **Jolt Tool**
 
-![image-20211029175643500](https://gitee.com/lezww/le.zw/raw/master/img/image-20211029175643500.png)
+![image-20220330104257459](https://gitee.com/lezww/le.zw/raw/master/img/image-20220330104257459.png)
 
-![image-20211029175708136](https://gitee.com/lezww/le.zw/raw/master/img/image-20211029175708136.png)
+![image-20220330104347395](https://gitee.com/lezww/le.zw/raw/master/img/image-20220330104347395.png)
 
-![image-20211029175723742](https://gitee.com/lezww/le.zw/raw/master/img/image-20211029175723742.png)
++ **Script Tool**
 
-![image-20211029175911011](https://gitee.com/lezww/le.zw/raw/master/img/image-20211029175911011.png)
+![image-20220330104413537](https://gitee.com/lezww/le.zw/raw/master/img/image-20220330104413537.png)
+
+![image-20220330104511597](https://gitee.com/lezww/le.zw/raw/master/img/image-20220330104511597.png)
 
 ## 开发测试
 
 ### 简介
 
-* Java FX 8 + NiFi 1.7 (依赖 nifi-expression-language 和 nifi-standard-utils) + JOLT 0.1.0
+* Java FX 8 + NiFi 1.7 (依赖 nifi-expression-language 和 nifi-standard-utils) + JOLT 0.1.0 + Codemirror 5.x
 
 ### 目录结构
 
-```text
+```bash
 jolt-tools                      root
 	└── src
       └── main
@@ -41,7 +43,8 @@ jolt-tools                      root
 ### 安装准备
 
 * Java 8
-* Maven 3
+* Maven 3.x
+* Codemirror 5.x 
 
 ### 打包
 
