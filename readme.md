@@ -23,21 +23,21 @@
 ### 目录结构
 
 ```bash
-jolt-tools                                                     root
+jolt-tools                                root
 	└── src
       └── main
           ├── java
           │   └── com
           │       └── lezw
-          │           ├── controller				javafx controller
+          │           ├── controller			javafx controller
           │           ├── transformjson		jolt transform class
-          │           └── util				          utils
+          │           └── util				    utils
           └── resources
-              ├── css									  fxml css
-              ├── fxml									javfx fxml
-              └── image                               app icon and background images
-        |_ ...                  						           other modules, to be extended
-	|_ pom                                                    root pom
+              ├── css									  	fxml css
+              ├── fxml										javfx fxml
+              └── image                   app icon and background images
+        |_ ...                  					other modules, to be extended
+	|_ pom                                  root pom
 ```
 
 
