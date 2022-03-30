@@ -22,25 +22,7 @@
 
 ### 目录结构
 
-```bash
-jolt-tools																root
-	└── src
-      └── main
-          ├── java
-          │   └── com
-          │       └── lezw
-          │           ├── controller			javafx controller
-          │           ├── transformjson		jolt transform class
-          │           └── util						utils
-          └── resources
-              ├── css											fxml css
-              ├── fxml										javfx fxml
-              └── image										app icon and background images
-        |_ ...														other modules, to be extended
-	|_ pom																	root pom
-```
-
-
+![image-20220330105923345](https://gitee.com/lezww/le.zw/raw/master/img/image-20220330105923345.png)
 
 ### 安装准备
 
