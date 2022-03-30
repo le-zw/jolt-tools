@@ -6,8 +6,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
+import com.lezw.codeeditor.CodeEditor;
+import com.lezw.codeeditor.CodeMirrorEditor;
 import com.lezw.transformjson.TransformJSONResource;
-import com.lezw.transformjson.dto.HighlighterFactory;
 import com.lezw.transformjson.dto.JoltSpecificationDTO;
 import com.lezw.transformjson.dto.ValidationDTO;
 import com.lezw.util.Dialogs;
@@ -21,26 +22,26 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.nifi.processors.standard.util.jolt.TransformUtils;
-import org.fxmisc.richtext.CodeArea;
-import org.fxmisc.richtext.LineNumberFactory;
 
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
-    private AnchorPane context;
+    private StackPane context;
 
     @FXML
     private StackPane dialogPane;
@@ -64,13 +65,22 @@ public class Controller implements Initializable {
     private ChoiceBox<String> dslChoice;
 
     @FXML
-    private CodeArea specText;
+    private StackPane specText;
 
     @FXML
-    private CodeArea inputText;
+    private StackPane inputText;
 
     @FXML
-    private CodeArea outputText;
+    private StackPane outputText;
+
+    @FXML
+    private ChoiceBox<String> joltSample;
+
+    private final CodeEditor spec = new CodeMirrorEditor();
+    private final CodeEditor input = new CodeMirrorEditor();
+    private final CodeEditor output = new CodeMirrorEditor();
+
+    int x0, y0, x1, y1;
 
     /**
      * Map transform "operation" names
@@ -92,16 +102,36 @@ public class Controller implements Initializable {
         STOCK_TRANSFORMS = Collections.unmodifiableMap( temp );
     }
     private final String[] joltDsl = { "Cardinality","Chain","Custom","Default","Modify - Default","Modify - Define","Modify - Overwrite","Remove","Shift","Sort" };
+    private final String[] files = getFiles();
     String transform = "";
     TransformJSONResource transformJSONResource = new TransformJSONResource();
     HashMap<String, String> attributes = new HashMap<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        specText.getChildren().add(spec.getWidget());
+        inputText.getChildren().add(input.getWidget());
+        outputText.getChildren().add(output.getWidget());
+
+        spec.init(
+                () -> spec.setJsonLint(true),
+                () -> spec.setMode("application/json"),
+                () -> spec.setTheme("neat"));
+        input.init(
+                //() -> input.setContent("select * from T t where t.name = \"test\" limit 20;", true),
+                () -> input.setJsonLint(true),
+                () -> input.setMode("application/json"),
+                () -> input.setTheme("neat"));
+        output.init(
+                () -> output.setMode("application/json"),
+                () -> output.setReadOnly(true),
+                () -> output.setTheme("neat"));
+
         //不显示提示框避免遮挡
         context.getChildren().remove(dialogPane);
 
         dslChoice.setItems(FXCollections.observableArrayList(joltDsl));
+        joltSample.setItems(FXCollections.observableArrayList(files));
         // 默认选中第2个选项
         dslChoice.getSelectionModel().select(1);
         // 监听选中事件
@@ -109,22 +139,29 @@ public class Controller implements Initializable {
                 .addListener((ov, value, newValue) -> {
                     transform = STOCK_TRANSFORMS.get(joltDsl[newValue.intValue()]);
                 });
-
-        // 设置 codeArea 显示行号且高亮 JSON
-        outputText.setParagraphGraphicFactory(LineNumberFactory.get(outputText));
-        inputText.setParagraphGraphicFactory(LineNumberFactory.get(inputText));
-        specText.setParagraphGraphicFactory(LineNumberFactory.get(specText));
-        highLightJson(outputText);
-        highLightJson(inputText);
-        highLightJson(specText);
+        joltSample.getSelectionModel().selectedIndexProperty()
+                .addListener((ov, value, newValue) -> {
+                    // 默认选中Chain
+                    dslChoice.getSelectionModel().select(1);
+                    String val = files[newValue.intValue()];
+                    Map<String, Object> testUnit = JsonUtils.classpathToMap("/jolt/" + val + ".json" );
+                    input.setContent(JsonUtils.toPrettyJsonString(testUnit.get( "input" )), true);
+                    spec.setContent(JsonUtils.toPrettyJsonString(testUnit.get( "spec" )), true);
+                    if (!Objects.isNull(testUnit.get("attributes"))) {
+                        Map<String,Object> tmp = JsonUtils.jsonToMap(JsonUtils.toPrettyJsonString(testUnit.get( "attributes" )));
+                        tmp.forEach((k,v) ->{
+                            attributes.put(k, v.toString());
+                        });
+                    }
+                });
         buttonTooltip();
     }
 
     @FXML
     protected void validateSpec(ActionEvent event){
         // 校验 spec 格式
-        String spec = specText.getText();
-        JoltSpecificationDTO specificationDTO = new JoltSpecificationDTO(transform, spec);
+        String sp = spec.getContent();
+        JoltSpecificationDTO specificationDTO = new JoltSpecificationDTO(transform, sp);
         ValidationDTO validationDTO = transformJSONResource.validateSpec(specificationDTO);
         if (validationDTO.isValid()){
             Dialogs.showYesInfoDialog("JOLT Specification",validationDTO.getMessage(), dialogPane, validSpecButton, context);
@@ -137,35 +174,60 @@ public class Controller implements Initializable {
     @FXML
     protected void transform(ActionEvent event) {
         //jolt转换json
-        String spec = specText.getText();
-        JoltSpecificationDTO joltSpecificationDTO = new JoltSpecificationDTO(transform, spec);
-        joltSpecificationDTO.setInput(inputText.getText());
+        String sp = spec.getContent();
+        JoltSpecificationDTO joltSpecificationDTO = new JoltSpecificationDTO(transform, sp);
+        joltSpecificationDTO.setInput(input.getContent());
         joltSpecificationDTO.setExpressionLanguageAttributes(attributes);
         try {
             Object inputJson = JsonUtils.jsonToObject(joltSpecificationDTO.getInput());
             JoltTransform transform = transformJSONResource.getTransformation(joltSpecificationDTO,true);
-            outputText.replaceText(JsonUtils.toPrettyJsonString(TransformUtils.transform(transform, inputJson)));
-            outputText.setStyleSpans(0, HighlighterFactory.getHighlighter("JSON").computeHighlighting(outputText.getText()));
+            output.setContent(JsonUtils.toPrettyJsonString(TransformUtils.transform(transform, inputJson)),true);
+            output.autoFormat();
         } catch (final Exception e) {
             //logger.error("Execute Specification Failed - " + e.toString());
-            outputText.replaceText("Execute Specification Failed - " + e.toString());
-            outputText.setStyleSpans(0, HighlighterFactory.getHighlighter("JSON").computeHighlighting(outputText.getText()));
+            output.setContent("Execute Specification Failed - " + e.toString(),true);
         }
     }
 
     @FXML
     protected void beautyInput(ActionEvent event) {
-        beautyJson(inputText);
+        input.autoFormat();
+    }
+
+    public void fullScreenInput() {
+        setSaveAccelerator(input);
+    }
+
+    public void fullScreenSpec() {
+        setSaveAccelerator(spec);
+    }
+
+    protected void setSaveAccelerator(CodeEditor cm) {
+        if (context.getChildren().contains(dialogPane)){
+            context.getChildren().remove(dialogPane);
+            if (dialogPane.getChildren().contains(spec.getWidget())) {
+                dialogPane.getChildren().remove(spec.getWidget());
+                specText.getChildren().add(spec.getWidget());
+            }else {
+                dialogPane.getChildren().remove(input.getWidget());
+                inputText.getChildren().add(input.getWidget());
+            }
+        }else {
+            context.getChildren().add(dialogPane);
+            dialogPane.getChildren().add(cm.getWidget());
+        }
     }
 
     @FXML
     protected void beautySpec(ActionEvent event) {
-        beautyJson(specText);
+        spec.autoFormat();
     }
 
     @FXML
     protected void setAttributes(ActionEvent event) {
         VBox vBox = new VBox();
+        Separator separator = new Separator();
+        vBox.getChildren().addAll(separator);
         if (attributes != null && attributes.size() >0) {
             Iterator<Map.Entry<String,String>> iterable = attributes.entrySet().iterator();
             while (iterable.hasNext()) {
@@ -195,20 +257,6 @@ public class Controller implements Initializable {
         attributeTotal(attributes, dialogPane, attributeButton, context, vBox);
     }
 
-    private void beautyJson(CodeArea codeArea) {
-        if (StringUtils.isNoneEmpty(codeArea.getText())){
-            codeArea.replaceText(JsonUtils.toPrettyJsonString(JsonUtils.jsonToObject(codeArea.getText())));
-            codeArea.setStyleSpans(0, HighlighterFactory.getHighlighter("JSON").computeHighlighting(codeArea.getText()));
-        }
-    }
-
-    private void highLightJson(CodeArea codeArea) {
-        //json 高亮
-        codeArea.textProperty().addListener((obs, oldText, newText) -> {
-            codeArea.setStyleSpans(0, HighlighterFactory.getHighlighter("JSON").computeHighlighting(newText));
-        });
-    }
-
     private void buttonTooltip() {
         validSpecButton.setTooltip(new Tooltip("校验 Specification 是否合法"));
 
@@ -222,7 +270,7 @@ public class Controller implements Initializable {
 
     }
 
-    private void attributeTotal(Map<String, String> attributes, StackPane dialogPane, Node btn, AnchorPane root, VBox vBox) {
+    private void attributeTotal(Map<String, String> attributes, StackPane dialogPane, Node btn, Pane root, VBox vBox) {
         JFXDialogLayout content = new JFXDialogLayout();
         //显示提示框
         root.getChildren().add(dialogPane);
@@ -237,11 +285,24 @@ public class Controller implements Initializable {
         attrValue.setPromptText("Value");
         attrValue.setPrefWidth(150);
 
+        JFXDialog dialog = new JFXDialog(dialogPane, content, JFXDialog.DialogTransition.CENTER, false);
+        dialog.setPrefHeight(dialogPane.getMinHeight());
+        dialog.setPrefWidth(dialogPane.getMinWidth());
+
+        JFXButton button = new JFXButton("确定");
+        button.setStyle("-fx-background-color:#3986F7;");
+        button.setOnAction((ActionEvent event) -> {
+            dialog.close();
+            //不显示提示框避免遮挡
+            root.getChildren().remove(dialogPane);
+        });
+        dialog.show();
+
         JFXButton attrAdd = new JFXButton();
         attrAdd.setStyle("-fx-pref-width: 50px;-fx-font-size: 14px;-fx-background-color: #3986F7;");
         attrAdd.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.PLUS));
         attrAdd.setOnAction((ActionEvent event) -> {
-            if (attributes.get(attrKey.getText()) == null && StringUtils.isNotEmpty(attrKey.getText())) {
+            if (!attributes.containsKey(attrKey.getText()) && StringUtils.isNotEmpty(attrKey.getText())) {
                 attributes.put(attrKey.getText(), attrValue.getText());
                 HBox h = new HBox(30);
                 h.setPadding(new Insets(10, 0, 0, 0));
@@ -265,29 +326,24 @@ public class Controller implements Initializable {
                 h.getChildren().add(delete);
 
                 vBox.getChildren().add(h);
+            }else {
+                if (attributes.containsKey(attrKey.getText()) && !attributes.get(attrKey.getText()).equals(attrValue.getText())) {
+                    // 更新attributes map
+                    attributes.replace(attrKey.getText(), attrValue.getText());
+                }
             }
         });
         hBox.getChildren().addAll(attrKey, attrValue, attrAdd);
 
         content.setHeading(hBox);
-
         content.setBody(vBox);
-        JFXDialog dialog = new JFXDialog(dialogPane, content, JFXDialog.DialogTransition.CENTER, false);
-        dialog.setPrefHeight(dialogPane.getMinHeight());
-        dialog.setPrefWidth(dialogPane.getMinWidth());
-
-        JFXButton button = new JFXButton("确定");
-        button.setStyle("-fx-background-color:#3986F7;");
-        button.setOnAction((ActionEvent event) -> {
-            dialog.close();
-            btn.setDisable(false);
-            //不显示提示框避免遮挡
-            root.getChildren().remove(dialogPane);
-        });
-        btn.setDisable(true);
         content.setActions(button);
-        dialog.show();
+
     }
 
+    private String[] getFiles(){
+        String[] list = {"JSON-key加前缀","JSON对象原样输出","JSON数组原样输出","JSON对象新增字段","JSON数组新增字段","JSON对象替换value","JSON数组替换key","JSON对象转数组","JSON提取value部分值","JSON过滤(QueryRecord)","String函数示例","复杂数组转简单数组"};
+        return list;
+    }
 
 }

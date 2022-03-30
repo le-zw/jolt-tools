@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="jolt-tools:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6096cf18-ae78-4349-9b72-3646681bcbee" name="Default Changelist" comment="" />
+    <list default="true" id="6096cf18-ae78-4349-9b72-3646681bcbee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lezw/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lezw/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lezw/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lezw/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lezw/transformjson/dto/Highlighter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lezw/transformjson/dto/HighlighterFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lezw/transformjson/dto/JSONHighlighter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lezw/util/Dialogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lezw/util/Dialogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/sample.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,12 +32,27 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
   </component>
   <component name="GradleLocalSettings">
     <option name="projectSyncType">
@@ -29,13 +62,29 @@
       </map>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON数组替换key.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON对象转数组.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/复杂数组转简单数组.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/lezw/ScriptRunner.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON提取value部分值.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON对象原样输出.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON数组原样输出.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/src.zip!/javax/script/ScriptEngine.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON对象新增字段.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/src.zip!/javax/script/ScriptEngineManager.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/jolt/JSON数组新增字段.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1zGL0kmEJfAz3lSjy9VoLucPAGg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -43,28 +92,49 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/image" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/jolt" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="工件" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.5367816" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="project.structure.side.proportion" value="0.16091955" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.配色方案字体" />
+  </component>
+  <component name="ReadonlyStatusHandler">
+    <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/jolt" />
+      <recent name="$PROJECT_DIR$/src/main/resources/script" />
+      <recent name="$PROJECT_DIR$/src/main/resources/codemirror/theme" />
+      <recent name="$PROJECT_DIR$/src/main/resources/html" />
+      <recent name="$PROJECT_DIR$/src/main/resources/codemirror" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/html" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.lezw" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lezw.script" />
+      <recent name="com.lezw" />
+      <recent name="com.lezw.groovy.script" />
       <recent name="com.lezw.util" />
       <recent name="com.lezw.transformjson" />
-      <recent name="com.lezw.controller" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/image" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/lezw/transformjson/dto" />
-      <recent name="$PROJECT_DIR$/src/main/resources/css" />
-      <recent name="$PROJECT_DIR$/src/main/resources/fxml" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JAR 应用程序.jolt-tools.jar">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lezw.App" />
       <module name="jolt-tools" />
@@ -78,26 +148,63 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="lzw" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lezw.util.lzw" />
+    <configuration name="ScriptRunnerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="jolt-tools" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lezw.util.*" />
+          <option name="PATTERN" value="com.lezw.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.lezw" />
+      <option name="MAIN_CLASS_NAME" value="com.lezw.ScriptRunnerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ScriptRunnerTest.testInputType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jolt-tools" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lezw.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lezw" />
+      <option name="MAIN_CLASS_NAME" value="com.lezw.ScriptRunnerTest" />
+      <option name="METHOD_NAME" value="testInputType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Devtools-1.0.0-jfx.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/app/Devtools-1.0.0-jfx.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="jolt-tools.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/jolt_tools_jar/jolt-tools.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JAR 应用程序.Devtools-1.0.0-jfx.jar" />
+      <item itemvalue="JUnit.ScriptRunnerTest" />
+      <item itemvalue="JUnit.ScriptRunnerTest.testInputType" />
+      <item itemvalue="应用程序.App" />
+      <item itemvalue="JAR 应用程序.jolt-tools.jar" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.lzw" />
+        <item itemvalue="JAR 应用程序.jolt-tools.jar" />
+        <item itemvalue="应用程序.App" />
+        <item itemvalue="JUnit.ScriptRunnerTest.testInputType" />
+        <item itemvalue="JAR 应用程序.Devtools-1.0.0-jfx.jar" />
+        <item itemvalue="JUnit.ScriptRunnerTest" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -116,112 +223,59 @@
       <workItem from="1634191846469" duration="7425000" />
       <workItem from="1634199868098" duration="20589000" />
       <workItem from="1634808785465" duration="1747000" />
+      <workItem from="1642395827616" duration="671000" />
+      <workItem from="1644215707934" duration="35000" />
+      <workItem from="1644306244694" duration="25660000" />
+      <workItem from="1644401596823" duration="420000" />
+      <workItem from="1644566363799" duration="3655000" />
+      <workItem from="1644810117041" duration="15989000" />
+      <workItem from="1644890363600" duration="451000" />
+      <workItem from="1644896133711" duration="61000" />
+      <workItem from="1644978116732" duration="14749000" />
+      <workItem from="1646103841284" duration="3283000" />
+      <workItem from="1646192138861" duration="16899000" />
+      <workItem from="1646290179575" duration="27329000" />
+      <workItem from="1646716431454" duration="5084000" />
+      <workItem from="1646731697245" duration="2263000" />
+      <workItem from="1646796919322" duration="294000" />
+      <workItem from="1646815791634" duration="4530000" />
+      <workItem from="1646882344672" duration="16039000" />
+      <workItem from="1647235588250" duration="12764000" />
+      <workItem from="1647317483959" duration="4328000" />
+      <workItem from="1647935796616" duration="2570000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="581" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1634096300877">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state x="581" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.960@0.0.1536.960" timestamp="1634096300877" />
-    <state x="506" y="231" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1634286922751">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state x="506" y="231" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.960@0.0.1536.960" timestamp="1634286922751" />
-    <state x="506" y="231" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1633919021728">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state x="506" y="231" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.960@0.0.1536.960" timestamp="1633919021728" />
-    <state width="1494" height="230" key="GridCell.Tab.0.bottom" timestamp="1634810622359">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="1494" height="230" key="GridCell.Tab.0.bottom/0.0.1536.960@0.0.1536.960" timestamp="1634810622359" />
-    <state width="1878" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562928" />
-    <state width="1494" height="265" key="GridCell.Tab.0.bottom/0.25.1536.846@0.25.1536.846" timestamp="1634283205974" />
-    <state width="1494" height="265" key="GridCell.Tab.0.bottom/0.25.1536.849@0.25.1536.849" timestamp="1633941931002" />
-    <state width="1494" height="265" key="GridCell.Tab.0.bottom/0.25.1536.851@0.25.1536.851" timestamp="1633942088764" />
-    <state width="1494" height="230" key="GridCell.Tab.0.center" timestamp="1634810622357">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="1494" height="230" key="GridCell.Tab.0.center/0.0.1536.960@0.0.1536.960" timestamp="1634810622357" />
-    <state width="1878" height="265" key="GridCell.Tab.0.center/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562927" />
-    <state width="1494" height="265" key="GridCell.Tab.0.center/0.25.1536.846@0.25.1536.846" timestamp="1634283205972" />
-    <state width="1494" height="265" key="GridCell.Tab.0.center/0.25.1536.849@0.25.1536.849" timestamp="1633941931001" />
-    <state width="1494" height="265" key="GridCell.Tab.0.center/0.25.1536.851@0.25.1536.851" timestamp="1633942088762" />
-    <state width="1494" height="230" key="GridCell.Tab.0.left" timestamp="1634810622357">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="1494" height="230" key="GridCell.Tab.0.left/0.0.1536.960@0.0.1536.960" timestamp="1634810622357" />
-    <state width="1878" height="265" key="GridCell.Tab.0.left/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562926" />
-    <state width="1494" height="265" key="GridCell.Tab.0.left/0.25.1536.846@0.25.1536.846" timestamp="1634283205971" />
-    <state width="1494" height="265" key="GridCell.Tab.0.left/0.25.1536.849@0.25.1536.849" timestamp="1633941931000" />
-    <state width="1494" height="265" key="GridCell.Tab.0.left/0.25.1536.851@0.25.1536.851" timestamp="1633942088761" />
-    <state width="1494" height="230" key="GridCell.Tab.0.right" timestamp="1634810622358">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="1494" height="230" key="GridCell.Tab.0.right/0.0.1536.960@0.0.1536.960" timestamp="1634810622358" />
-    <state width="1878" height="265" key="GridCell.Tab.0.right/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562928" />
-    <state width="1494" height="265" key="GridCell.Tab.0.right/0.25.1536.846@0.25.1536.846" timestamp="1634283205973" />
-    <state width="1494" height="265" key="GridCell.Tab.0.right/0.25.1536.849@0.25.1536.849" timestamp="1633941931001" />
-    <state width="1494" height="265" key="GridCell.Tab.0.right/0.25.1536.851@0.25.1536.851" timestamp="1633942088763" />
-    <state width="747" height="328" key="GridCell.Tab.1.bottom" timestamp="1634810622351">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="747" height="328" key="GridCell.Tab.1.bottom/0.0.1536.960@0.0.1536.960" timestamp="1634810622351" />
-    <state width="1494" height="328" key="GridCell.Tab.1.bottom/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562918" />
-    <state width="747" height="328" key="GridCell.Tab.1.center" timestamp="1634810622351">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="747" height="328" key="GridCell.Tab.1.center/0.0.1536.960@0.0.1536.960" timestamp="1634810622351" />
-    <state width="1494" height="328" key="GridCell.Tab.1.center/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562917" />
-    <state width="747" height="328" key="GridCell.Tab.1.left" timestamp="1634810622350">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="747" height="328" key="GridCell.Tab.1.left/0.0.1536.960@0.0.1536.960" timestamp="1634810622350" />
-    <state width="1494" height="328" key="GridCell.Tab.1.left/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562916" />
-    <state width="747" height="328" key="GridCell.Tab.1.right" timestamp="1634810622351">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="747" height="328" key="GridCell.Tab.1.right/0.0.1536.960@0.0.1536.960" timestamp="1634810622351" />
-    <state width="1494" height="328" key="GridCell.Tab.1.right/0.0.1920.1080/85.1080.1792.1120@0.0.1920.1080" timestamp="1634537562918" />
-    <state x="306" y="139" key="Maven.ArtifactSearchDialog" timestamp="1634005448602">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state x="306" y="139" key="Maven.ArtifactSearchDialog/0.0.1536.960@0.0.1536.960" timestamp="1634005448602" />
-    <state x="277" y="116" key="SettingsEditor" timestamp="1634002423891">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state x="277" y="116" key="SettingsEditor/0.0.1536.960@0.0.1536.960" timestamp="1634002423891" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1634285307569">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1536.960@0.0.1536.960" timestamp="1634285307569" />
-    <state x="620" y="397" key="VCS.ChangelistChooser" timestamp="1634007878767">
-      <screen x="0" y="0" width="1536" height="960" />
-    </state>
-    <state x="620" y="397" key="VCS.ChangelistChooser/0.0.1536.960@0.0.1536.960" timestamp="1634007878767" />
+    <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lezw/transformjson/TransformJSONResource.java</url>
           <line>108</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lezw/transformjson/TransformJSONResource.java</url>
           <line>114</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/apache/nifi/nifi-standard-utils/1.14.0/nifi-standard-utils-1.14.0-sources.jar!/org/apache/nifi/processors/standard/util/jolt/TransformFactory.java</url>
           <line>40</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lezw/groovy/script/ScriptingComponentHelper.java</url>
+          <line>331</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="19" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -7,14 +7,18 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * @author longzhongwei
+ */
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        AnchorPane pane = loader.load();
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("JSON JOLT Tools");
+        primaryStage.setTitle("DevTools");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")));
         primaryStage.show();
     }

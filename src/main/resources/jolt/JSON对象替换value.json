@@ -1,0 +1,16 @@
+{
+  "input": {
+    "string": "the QuIcK brOwn fox",
+    "zeroIndex": 0,
+    "threeIndex": 3,
+    "trimMe": "  tuna "
+  },
+  "spec": [
+    {
+      "operation": "modify-overwrite-beta",
+      "spec": {
+        "string": "the replace text"
+      }
+    }
+  ]
+}

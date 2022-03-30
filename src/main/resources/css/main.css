@@ -1,14 +1,23 @@
 /*配置下拉框选择列表 css*/
 #dslChoice .context-menu {
+    -fx-background-color: white;
     -fx-pref-width: 221px;
+    -fx-text-fill: white;
 }
 #context {
-    -fx-background-color: #F2F4F7;
+    /*-fx-background-color: #F2F4F7;*/
+    /*-fx-background-image: url("/image/bg.jpg");*/
+    -fx-background-color: #52627a;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);
+    -fx-border-radius: 5;
+    -fx-border-image-width: 5;
 }
 
 .root {
     -choice-base: linear-gradient(rgb(255.0, 255.0, 255.0) 25.0%, rgb(243.0, 243.0, 243.0) 50.0%, rgb(236.0, 236.0, 236.0) 50.0%, rgb(243.0, 243.0, 243.0) 100.0% );
 }
+
 /*******************************************************************************
  *                                                                             *
  * ChoiceBox                                                                   *
@@ -22,13 +31,16 @@
     -fx-border-radius: 2.0;
     -fx-background-radius: 2.0, 2.0;
 }
+#scriptPath,#modulePath {
+    -fx-background-color: white;
+}
 .choice-box {
     -fx-border-radius: 4.0;
     -fx-border-width: 0.5;
     -fx-border-insets: 0.5;
     -fx-border-color: rgb(207.0, 207.0, 207.0);
 
-    -fx-background-color: linear-gradient(rgb(147.0, 147.0, 147.0) 0.0%, rgb(127.0, 127.0, 127.0) 100.0%), -choice-base;
+    /*-fx-background-color: linear-gradient(rgb(147.0, 147.0, 147.0) 0.0%, rgb(127.0, 127.0, 127.0) 100.0%), -choice-base;*/
     -fx-background-insets: 1.0, 1.5;
     -fx-background-radius: 3.5, 3.5;
     -fx-padding: 0.12em 0.0em 0.12em 0.0em;
@@ -92,10 +104,6 @@
     -fx-text-fill: -fx-text-base-color;
 }
 
-.menu-item:disabled > .label {
-    -fx-opacity: -fx-disabled-opacity;
-}
-
 .menu-item:focused {
     -fx-border-width: 1.0 0.0 1.0 0.0;
     -fx-border-color: rgb(90.0, 130.0, 235.0) transparent rgb(23.0, 89.0, 231.0) transparent;
@@ -138,14 +146,20 @@
 .jfx-button {
     -jfx-button-type: RAISED;
     -fx-font-size: 14px;
-    /*-fx-background-color: #3986F7;*/
+    -fx-background-color: #3986F7;
     -fx-pref-height: 27px;
     -fx-pref-width: 90px;
     -fx-text-fill: white;
-    -fx-background-color: #245858;
+    /*-fx-background-color: #245858;*/
 }
 
 .code-area .text {
+    -fx-fill: #222222;
+    -fx-font-size: 14px;
+    -fx-font-family: Monaco;
+}
+
+.choice-box .text {
     -fx-fill: #222222;
     -fx-font-size: 14px;
     -fx-font-family: Monaco;

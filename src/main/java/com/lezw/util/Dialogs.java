@@ -8,13 +8,13 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public final class Dialogs {
-    public static void showYesInfoDialog(String header, String message, StackPane dialogPane, Node btn, AnchorPane root) {//提示框
+    public static void showYesInfoDialog(String header, String message, StackPane dialogPane, Node btn, Pane root) {//提示框
         JFXDialogLayout content = new JFXDialogLayout();
         //圆勾
         FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.CHECK_CIRCLE);
@@ -23,7 +23,7 @@ public final class Dialogs {
         Total(header, message, dialogPane, btn, root, content, icon);
     }
 
-    public static void showNoInfoDialog(String header, String message, StackPane dialogPane, Node btn, AnchorPane root) {//提示框
+    public static void showNoInfoDialog(String header, String message, StackPane dialogPane, Node btn, Pane root) {//提示框
         JFXDialogLayout content = new JFXDialogLayout();
         //圆叉
         FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.TIMES_CIRCLE);
@@ -32,7 +32,7 @@ public final class Dialogs {
         Total(header, message, dialogPane, btn, root, content, icon);
     }
 
-    public static void showWarnInfoDialog(String header, String message, StackPane dialogPane, Node btn, AnchorPane root) {//提示框
+    public static void showWarnInfoDialog(String header, String message, StackPane dialogPane, Node btn, Pane root) {//提示框
         JFXDialogLayout content = new JFXDialogLayout();
         //圆感叹号
         FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.EXCLAMATION_CIRCLE);
@@ -41,7 +41,8 @@ public final class Dialogs {
         Total(header, message, dialogPane, btn, root, content, icon);
     }
 
-    private static void Total(String header, String message, StackPane dialogPane, Node btn, AnchorPane root, JFXDialogLayout content, FontAwesomeIconView icon) {
+    private static void Total(String header, String message, StackPane dialogPane, Node btn, Pane root, JFXDialogLayout content,
+                              FontAwesomeIconView icon) {
         //显示提示框
         root.getChildren().add(dialogPane);
         content.setHeading(icon, new Text("           "+header));

@@ -2,12 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lezw</groupId>
-    <artifactId>jolt-tools</artifactId>
-    <version>1.0.0</version>
+    <artifactId>Devtools</artifactId>
+    <version>1.0.1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <nifi.groovy.version>2.5.4</nifi.groovy.version>
     </properties>
     <dependencies>
         <!--    nifi表达式    -->
@@ -21,6 +22,44 @@
             <artifactId>nifi-standard-utils</artifactId>
             <version>1.7.1-2.0_18000</version>
         </dependency>
+        <!--    nifi script    -->
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-api</artifactId>
+            <version>1.7.1-2.0_18000</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-mock</artifactId>
+            <version>1.7.1-2.0_18000</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${nifi.groovy.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
+            <version>${nifi.groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-jsr223</artifactId>
+            <version>${nifi.groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xml</artifactId>
+            <version>${nifi.groovy.version}</version>
+        </dependency>
         <!--    JOLT    -->
         <dependency>
             <groupId>com.bazaarvoice.jolt</groupId>
@@ -31,12 +70,6 @@
             <groupId>com.bazaarvoice.jolt</groupId>
             <artifactId>json-utils</artifactId>
             <version>0.1.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.fxmisc.richtext/richtextfx -->
-        <dependency>
-            <groupId>org.fxmisc.richtext</groupId>
-            <artifactId>richtextfx</artifactId>
-            <version>0.10.6</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
         <dependency>
@@ -49,6 +82,31 @@
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx</artifactId>
             <version>8.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>clojure</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ivy</groupId>
+            <artifactId>ivy</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scijava</groupId>
+            <artifactId>jython-shaded</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.luaj</groupId>
+            <artifactId>luaj-jse</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>9.1.9.0</version>
         </dependency>
     </dependencies>
 
@@ -63,8 +121,8 @@
                         <id>copy-dependencies</id>
                         <phase>package</phase>
                         <configuration>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
                         </configuration>
                         <goals>
@@ -81,11 +139,12 @@
                     <!-- 指明javafx的入口类 -->
                     <mainClass>com.lezw.App</mainClass>
                     <!-- 在MAC系统进行打包,所以这里是dmg文件 -->
-                    <bundler>dmg</bundler>
+<!--                    <bundler>dmg</bundler>-->
+<!--                    <bundler>exe</bundler>-->
                     <!-- 指明打包后文件的存储位置 -->
                     <jfxAppOutputDir>${project.build.directory}/app</jfxAppOutputDir>
                     <nativeOutputDir>${project.build.directory}/native</nativeOutputDir>
-                    <appName>Jolt Tools</appName>
+                    <appName>DevTools</appName>
                     <bundleArguments>
                         <icon>${project.basedir}/src/main/resources/image/icon.icns</icon>
                     </bundleArguments>

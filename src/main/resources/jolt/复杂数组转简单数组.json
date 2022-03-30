@@ -1,0 +1,220 @@
+{
+  "input": {
+    "ESB":{
+      "DATA":{
+        "DATAINFOS":{
+          "DATAINFO":[
+            {
+              "CODE":"主编码的值",
+              "CODEVALUE":{
+                "SPECIALITY":[
+                  {
+                    "PROPERTY":[
+                      {
+                        "PROPERTYCODE":"PS_ORG_PK",
+                        "PROPERTYNAME":"PS人力组织编码",
+                        "PROPERTYVALUE":"人力组织编码的值"
+                      },
+                      {
+                        "PROPERTYCODE":"PS_NC_ORG_CODE",
+                        "PROPERTYNAME":"NC人力组织编码",
+                        "PROPERTYVALUE":"NC人力组织编码的值"
+                      },
+                      {
+                        "PROPERTYCODE":"PS_ORG_NAME",
+                        "PROPERTYNAME":"人力组织名称",
+                        "PROPERTYVALUE":"人力组织名称的值"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_SHORTNAME",
+                        "PROPERTYNAME":"组织简称",
+                        "PROPERTYVALUE":"组织简称的值"
+                      },
+                      {
+                        "PROPERTYCODE":"PS_ORG_PARENT_CODE",
+                        "PROPERTYNAME":"所属PS上级组织编码",
+                        "PROPERTYVALUE":"上级编码"
+                      },
+                      {
+                        "PROPERTYCODE":"PS_ORG_PARENT_NAME",
+                        "PROPERTYNAME":"所属上级组织名称",
+                        "PROPERTYVALUE":"所属上级组织名称的值"
+                      },
+                      {
+                        "PROPERTYCODE":"BUSINESS_UNITS_CODE",
+                        "PROPERTYNAME":"业务单元编码",
+                        "PROPERTYVALUE":"单元编码"
+                      },
+                      {
+                        "PROPERTYCODE":"BUSINESS_UNITS_NAME",
+                        "PROPERTYNAME":"业务单元名称",
+                        "PROPERTYVALUE":"业务单元名称的值"
+                      },
+                      {
+                        "PROPERTYCODE":"BUSINESS_TYPE",
+                        "PROPERTYNAME":"业务类型",
+                        "PROPERTYVALUE":"1"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_TYPE",
+                        "PROPERTYNAME":"组织类型",
+                        "PROPERTYVALUE":"类"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_RANK",
+                        "PROPERTYNAME":"组织层级",
+                        "PROPERTYVALUE":"组"
+                      },
+                      {
+                        "PROPERTYCODE":"LAST_UPDATE_USER",
+                        "PROPERTYNAME":"更新人",
+                        "PROPERTYVALUE":"更新人的值"
+                      }
+                    ],
+                    "SPECIALITYCODE":"JBXX"
+                  },
+                  {
+                    "PROPERTY":[
+                      {
+                        "PROPERTYCODE":"ORG_ESTABLISH_DATE",
+                        "PROPERTYNAME":"组织成立时间",
+                        "PROPERTYVALUE":"2000-01-01 10:00:00"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_REVOCATION_DATE",
+                        "PROPERTYNAME":"组织撤销日期",
+                        "PROPERTYVALUE":"2020-01-01 10:00:00"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_STATUS",
+                        "PROPERTYNAME":"组织状态",
+                        "PROPERTYVALUE":"1"
+                      },
+                      {
+                        "PROPERTYCODE":"LEADER_CODE",
+                        "PROPERTYNAME":"分管领导工号",
+                        "PROPERTYVALUE":"领导工号"
+                      },
+                      {
+                        "PROPERTYCODE":"LEADER_NAME",
+                        "PROPERTYNAME":"分管领导",
+                        "PROPERTYVALUE":"分管领导的值"
+                      },
+                      {
+                        "PROPERTYCODE":"HRBP_CODE",
+                        "PROPERTYNAME":"HRBP人员工号",
+                        "PROPERTYVALUE":"HR工号"
+                      },
+                      {
+                        "PROPERTYCODE":"HRBP_NAME",
+                        "PROPERTYNAME":"HRBP人员姓名",
+                        "PROPERTYVALUE":"HRBP人员姓名的值"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_HEAD_CODE",
+                        "PROPERTYNAME":"组织负责人工号",
+                        "PROPERTYVALUE":"人工号"
+                      },
+                      {
+                        "PROPERTYCODE":"ORG_HEAD_NAME",
+                        "PROPERTYNAME":"组织负责人姓名",
+                        "PROPERTYVALUE":"组织负责人姓名的值"
+                      },
+                      {
+                        "PROPERTYCODE":"TIME_KEEPER_CODE",
+                        "PROPERTYNAME":"考勤员工号",
+                        "PROPERTYVALUE":"考勤员"
+                      }
+                    ],
+                    "SPECIALITYCODE":"GLXX"
+                  },
+                  {
+                    "PROPERTY":[
+                      {
+                        "PROPERTYCODE":"COUNTRY_NAME",
+                        "PROPERTYNAME":"所在国家",
+                        "PROPERTYVALUE":"所在国家的值"
+                      },
+                      {
+                        "PROPERTYCODE":"COUNTRY_CODE",
+                        "PROPERTYNAME":"所在国家编码",
+                        "PROPERTYVALUE":"国家编码"
+                      },
+                      {
+                        "PROPERTYCODE":"PROVINCE_NAME",
+                        "PROPERTYNAME":"所在省",
+                        "PROPERTYVALUE":"所在省的值"
+                      },
+                      {
+                        "PROPERTYCODE":"PROVINCE_CODE",
+                        "PROPERTYNAME":"所在省编码",
+                        "PROPERTYVALUE":"省编码"
+                      },
+                      {
+                        "PROPERTYCODE":"CITY_NAME",
+                        "PROPERTYNAME":"所在市",
+                        "PROPERTYVALUE":"所在市的值"
+                      },
+                      {
+                        "PROPERTYCODE":"CITY_CODE",
+                        "PROPERTYNAME":"所在市编码",
+                        "PROPERTYVALUE":"市编码"
+                      },
+                      {
+                        "PROPERTYCODE":"COUNTY_NAME",
+                        "PROPERTYNAME":"所在区县",
+                        "PROPERTYVALUE":"所在区县的值"
+                      },
+                      {
+                        "PROPERTYCODE":"COUNTY_CODE",
+                        "PROPERTYNAME":"所在区县编码",
+                        "PROPERTYVALUE":"区县编码"
+                      }
+                    ],
+                    "SPECIALITYCODE":"DZXX"
+                  }
+                ]
+              },
+              "UUID":"45b547c9-1e7f-4fe5-b4fc-f2b47e9fa2b9"
+            }
+          ],
+          "PUUID":"批数据的UUID"
+        }
+      }
+    }
+  },
+  "spec": [
+    {
+      "operation": "shift",
+      "spec": {
+        "ESB": {
+          "DATA": {
+            "DATAINFOS": {
+              "DATAINFO": {
+                "*": {
+                  "@(2,PUUID)": "[&1].PUUID",
+                  "CODEVALUE": {
+                    "SPECIALITY": {
+                      "*": {
+                        "PROPERTY": {
+                          "*": {
+                            "PROPERTYVALUE": "[&6].@(1,PROPERTYCODE)"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "MULTICODE": {
+                    "VALUELIST": "[&2].GWXX"
+                  },
+                  "UUID": "[&1].tUUID",
+                  "#${now():format('yyyy-MM-dd HH:mm:ss')}": "[&1].LASTMODIFYRECORDTIME"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
