@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="jolt-tools" />
+        <module name="Devtools" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jolt-tools" target="8" />
+      <module name="jolt-tools" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

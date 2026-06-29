@@ -1,0 +1,63 @@
+{
+  "input": [
+    {
+      "KOSTL": "0100101010",
+      "LTEXT": "办公室",
+      "BUKRS": "0100",
+      "PRCTR": "0100999999",
+      "FUNC_AREA": "Y000"
+    },
+    {
+      "KOSTL": "0100102010",
+      "LTEXT": "人力资源部(停用)",
+      "BUKRS": "0100",
+      "PRCTR": "0100999999",
+      "FUNC_AREA": "Y000"
+    },
+    {
+      "KOSTL": "0100103010",
+      "LTEXT": "财务资产管理部",
+      "BUKRS": "0100",
+      "PRCTR": "0100999999",
+      "FUNC_AREA": "Y000"
+    },
+    {
+      "KOSTL": "0100104010",
+      "LTEXT": "资金运营管理中心",
+      "BUKRS": "0100",
+      "PRCTR": "0100999999",
+      "FUNC_AREA": "Y000"
+    },
+    {
+      "KOSTL": "0100105010",
+      "LTEXT": "投资与金融产业部",
+      "BUKRS": "0100",
+      "PRCTR": "0100999999",
+      "FUNC_AREA": "Y000"
+    }
+  ],
+  "spec": [
+    {
+      "operation": "shift",
+      "spec": {
+        "*": {
+          "${searchKey}": {
+            "${searchContainsValue}*": {
+              "@2": "[]"
+            },
+            "*${searchContainsValue}*": {
+              "@2": "[]"
+            },
+            "*${searchContainsValue}": {
+              "@2": "[]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "attributes": {
+    "searchContainsValue": "停用",
+    "searchKey": "LTEXT"
+  }
+}

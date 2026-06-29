@@ -1,0 +1,15 @@
+.cm-s-neat span.cm-comment { color: #a86; } /* 注释 */
+.cm-s-neat span.cm-keyword { line-height: 1em; font-weight: bold; color: #92278F; }
+.cm-s-neat span.cm-string { color: #3AB54A }
+
+.cm-s-neat span.cm-property { color: #aa2ca6 }
+.cm-s-neat span.cm-builtin { line-height: 1em; font-weight: bold; color: #077; }
+.cm-s-neat span.cm-special { line-height: 1em; font-weight: bold; color: #0aa; }
+.cm-s-neat span.cm-variable { color: black; }
+.cm-s-neat span.cm-number { color: #25AAE2; }/* 数字 */
+.cm-s-neat span.cm-atom { color: #F98280 }/* 布尔 */
+.cm-s-neat span.cm-meta { color: #555; }
+.cm-s-neat span.cm-link { color: #61D2D6; }
+
+.cm-s-neat .CodeMirror-activeline-background { background: #e8f2ff; }
+.cm-s-neat .CodeMirror-matchingbracket { outline:1px solid grey; color:red !important; }

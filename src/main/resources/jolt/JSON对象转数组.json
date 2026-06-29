@@ -1,0 +1,27 @@
+{
+  "input": {
+    "tradingPartner": "78401",
+    "transactionReference": "test2022022201",
+    "timeStamp": "test2022022201",
+    "transactionDate": "2022-02-19",
+    "companyCode": "00784",
+    "detailLines": [
+      {
+        "documentType": "aaa"
+      }
+    ]
+  },
+  "spec": [
+    {
+      "operation": "shift",
+      "spec": {
+        "*": "[#2].&",
+        "detailLines": {
+          "0": {
+            "documentType": "[#0].M1EDCT"
+          }
+        }
+      }
+    }
+  ]
+}

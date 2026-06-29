@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Main-Class: com.lezw.App
+Class-Path: logback-core-1.2.3.jar junit-platform-engine-1.3.1.jar nifi-
+ properties-1.7.1-2.0_18000.jar hamcrest-core-1.3.jar groovy-jsr223-2.5.
+ 4.jar nifi-framework-api-1.7.1-2.0_18000.jar jackson-databind-2.9.10.5.
+ jar nifi-expression-language-1.7.1-2.0_18000.jar accessors-smart-1.2.ja
+ r logback-classic-1.2.3.jar json-smart-2.3.jar nifi-mock-1.7.1-2.0_1800
+ 0.jar groovy-xml-2.5.4.jar commons-codec-1.11.jar jline-2.14.6.jar juni
+ t-platform-commons-1.3.1.jar groovy-datetime-2.5.4.jar qdox-1.12.1.jar 
+ antlr-runtime-3.5.2.jar testng-6.13.1.jar junit-4.12.jar commons-lang3-
+ 3.7.jar jackson-annotations-2.9.10.jar groovy-test-junit5-2.5.4.jar nif
+ i-utils-1.7.1-2.0_18000.jar ant-launcher-1.9.13.jar jolt-core-0.1.0.jar
+  slf4j-api-1.7.25.jar commons-io-2.6.jar groovy-cli-commons-2.5.4.jar g
+ roovy-ant-2.5.4.jar opentest4j-1.1.1.jar groovy-docgenerator-2.5.4.jar 
+ nifi-standard-utils-1.7.1-2.0_18000.jar groovy-nio-2.5.4.jar nifi-secur
+ ity-utils-1.7.1-2.0_18000.jar json-path-2.4.0.jar groovy-groovydoc-2.5.
+ 4.jar groovy-groovysh-2.5.4.jar luaj-jse-3.0.1.jar groovy-jmx-2.5.4.jar
+  groovy-testng-2.5.4.jar groovy-macro-2.5.4.jar junit-jupiter-engine-5.
+ 3.1.jar jruby-complete-9.1.9.0.jar junit-jupiter-api-5.3.1.jar groovy-c
+ li-picocli-2.5.4.jar ant-1.9.13.jar fontawesomefx-8.9.jar nifi-properti
+ es-loader-1.7.1-2.0_18000.jar bcprov-jdk15on-1.59.jar ivy-2.4.0.jar nif
+ i-api-1.7.1-2.0_18000.jar junit-platform-launcher-1.3.1.jar groovy-test
+ -2.5.4.jar groovy-servlet-2.5.4.jar clojure-1.8.0.jar groovy-templates-
+ 2.5.4.jar ant-junit-1.9.13.jar groovy-json-2.5.4.jar picocli-3.7.0.jar 
+ groovy-sql-2.5.4.jar jython-shaded-2.7.1.jar groovy-swing-2.5.4.jar nif
+ i-data-provenance-utils-1.7.1-2.0_18000.jar javax.inject-1.jar jcommand
+ er-1.72.jar groovy-console-2.5.4.jar asm-5.0.4.jar commons-cli-1.4.jar 
+ groovy-2.5.4.jar jfoenix-8.0.10.jar ant-antlr-1.9.13.jar jackson-core-2
+ .9.10.jar apiguardian-api-1.0.0.jar bcpkix-jdk15on-1.59.jar json-utils-
+ 0.1.0.jar
+

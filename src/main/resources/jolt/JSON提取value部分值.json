@@ -1,0 +1,44 @@
+{
+  "input": [
+    {
+      "pointName": "H_ZG_DT_Per7_hLkA",
+      "time": "1623030600",
+      "value": "3209.765",
+      "status": 0
+    },
+    {
+      "pointName": "H_ZG_DT_Per7_hLkB",
+      "time": "1623030600",
+      "value": "3209.765",
+      "status": 0
+    },
+    {
+      "pointName": "H_ZG_DT_Per7_hLkBNTR",
+      "time": "1623030600",
+      "value": "2735.348",
+      "status": 0
+    },
+    {
+      "pointName": "H_ZG_DT_Per7_hLkD",
+      "time": "1623030600",
+      "value": "2883.263",
+      "status": 0
+    }
+  ],
+  "spec": [
+    {
+      "operation": "shift",
+      "spec": {
+        "*": {
+          "pointName": {
+            "*_*_*_*_*": {
+              "$(0,5)": "[&3].pointName",
+              "$": "[&3].srcName"
+            }
+          },
+          "*": "[&1].&"
+        }
+      }
+    }
+  ]
+}

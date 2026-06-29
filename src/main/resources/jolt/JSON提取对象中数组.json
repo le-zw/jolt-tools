@@ -1,0 +1,44 @@
+{
+  "input": {
+    "D": "B",
+    "A": [
+      {
+        "SZEKCO": "00784",
+        "SZEDOC": "1569304",
+        "SZEDCT": "SO",
+        "SZEDLN": "1000",
+        "SZLITM": "3032710                  ",
+        "SZDSC1": "倍滑超薄装12只            ",
+        "SZUORG": "10000"
+      },
+      {
+        "SZEKCO": "00784",
+        "SZEDOC": "1569304",
+        "SZEDCT": "SO",
+        "SZEDLN": "2000",
+        "SZLITM": "3032711                  ",
+        "SZDSC1": "倍滑超薄装3只             ",
+        "SZUORG": "20000"
+      },
+      {
+        "SZEKCO": "00785",
+        "SZEDOC": "1569304",
+        "SZEDCT": "SO",
+        "SZEDLN": "2000",
+        "SZLITM": "3032711                  ",
+        "SZDSC1": "倍滑超薄装3只             ",
+        "SZUORG": "20000"
+      }
+    ]
+  },
+  "spec": [
+    {
+      "operation": "shift",
+      "spec": {
+        "A": {
+          "*": "[]"
+        }
+      }
+    }
+  ]
+}

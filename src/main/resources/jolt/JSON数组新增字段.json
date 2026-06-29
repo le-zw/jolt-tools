@@ -1,0 +1,35 @@
+{
+  "input": {
+    "date": "2022-09-03 19:23:53",
+    "device_name": "数控内圆磨床032-013",
+    "device_id": "1144",
+    "sensor": [
+      {
+        "sensor_id": "5836",
+        "value": "1",
+        "sensor_name": "设备状态"
+      },
+      {
+        "sensor_id": "5842",
+        "value": "",
+        "sensor_name": "主轴负载"
+      }
+    ],
+    "status": "1"
+  },
+  "spec": [
+    {
+      "operation": "shift",
+      "spec": {
+        "sensor": {
+          "*": {
+            "*": "[#2].&",
+            "@(2,date)": "[#2].date",
+            "@(2,device_name)": "[#2].device_name",
+            "@(2,device_id)": "[#2].device_id"
+          }
+        }
+      }
+    }
+  ]
+}

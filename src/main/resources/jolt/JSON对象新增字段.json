@@ -1,0 +1,36 @@
+{
+  "input": {
+    "MT_EBID2ECC_BR_T": {
+      "SALES_RECORD": {
+        "ZJBRQ": "2021-12-20",
+        "ZKBRQ": "2021-12-20",
+        "ZFSRQ2": "2021-12-20",
+        "ZGGRQ": "2021-12-20",
+        "ZFSRQ1": "2021-12-20",
+        "ZJBSJ": "09:00:00",
+        "ZKBSJ": "09:00:00"
+      },
+      "R_INDEX": "Z15_10010",
+      "MESSAGEHEDAER": {
+        "InterfaceId": "ZB_YSD",
+        "MessageId": 10010
+      },
+      "BIZ_IND": "Z15"
+    }
+  },
+  "spec": [
+    {
+      "operation": "modify-define-beta",
+      "spec": {
+        "MT_EBID2ECC_BR_T": {
+          "MESSAGEHEDAER": {
+            "Sender": "ESB",
+            "SendTime": "${now():format('HH:mm:ss')}",
+            "SendDate": "${now():format('yyyy-MM-dd')}",
+            "Receiver": "05"
+          }
+        }
+      }
+    }
+  ]
+}
