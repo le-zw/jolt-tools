@@ -60,6 +60,44 @@
             <artifactId>groovy-xml</artifactId>
             <version>${nifi.groovy.version}</version>
         </dependency>
+        <!--    nifi script    -->
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-api</artifactId>
+            <version>1.7.1-2.0_18000</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-mock</artifactId>
+            <version>1.7.1-2.0_18000</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${nifi.groovy.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
+            <version>${nifi.groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-jsr223</artifactId>
+            <version>${nifi.groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xml</artifactId>
+            <version>${nifi.groovy.version}</version>
+        </dependency>
         <!--    JOLT    -->
         <dependency>
             <groupId>com.bazaarvoice.jolt</groupId>
@@ -171,8 +209,6 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -203,6 +239,7 @@
                 <configuration>
                     <mainClass>com.lezw.App</mainClass>
                     <bundler>dmg</bundler>
+                    <!-- 指明打包后文件的存储位置 -->
                     <jfxAppOutputDir>${project.build.directory}/app</jfxAppOutputDir>
                     <nativeOutputDir>${project.build.directory}/native</nativeOutputDir>
                     <appName>DevTools</appName>
