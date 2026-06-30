@@ -3,7 +3,7 @@ package com.lezw.db;
 import com.bazaarvoice.jolt.JsonUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.File;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
@@ -17,6 +17,7 @@ import java.util.Map;
 public class DatabaseUtil {
     private static final String DB_PATH = System.getProperty("user.home") + File.separator + ".jolt-tools" + File.separator + "samples.db";
     private static final String DB_DIR = System.getProperty("user.home") + File.separator + ".jolt-tools";
+    private static final String CLASSPATH_DB = "/db/samples.db";
 
     private static Connection connection;
 
@@ -35,6 +36,12 @@ public class DatabaseUtil {
                 dir.mkdirs();
             }
 
+            // 首次运行时从classpath复制数据库到用户目录
+            File dbFile = new File(DB_PATH);
+            if (!dbFile.exists()) {
+                copyDatabaseFromClasspath(dbFile);
+            }
+
             // 连接数据库
             connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
             connection.setAutoCommit(true);
@@ -46,6 +53,26 @@ public class DatabaseUtil {
             initBuiltinSamples();
         } catch (SQLException e) {
             throw new RuntimeException("数据库初始化失败: " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * 从classpath复制数据库文件到用户目录
+     */
+    private static void copyDatabaseFromClasspath(File targetFile) {
+        try (InputStream is = DatabaseUtil.class.getResourceAsStream(CLASSPATH_DB)) {
+            if (is != null) {
+                try (OutputStream os = new FileOutputStream(targetFile)) {
+                    byte[] buffer = new byte[4096];
+                    int length;
+                    while ((length = is.read(buffer)) > 0) {
+                        os.write(buffer, 0, length);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            // 如果classpath中没有数据库文件，则创建空数据库
+            System.out.println("未找到内置数据库文件，将创建新数据库");
         }
     }
 

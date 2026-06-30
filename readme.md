@@ -46,6 +46,7 @@ jolt-tools                                              root
 ### 打包
 
 ```bash
+jolt-tools> export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
 jolt-tools> mvn install
 jolt-tools> mvn jfx:native
 ```

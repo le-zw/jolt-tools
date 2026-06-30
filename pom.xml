@@ -64,12 +64,12 @@
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-api</artifactId>
-            <version>1.7.1-2.0_18000</version>
+            <version>1.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-mock</artifactId>
-            <version>1.7.1-2.0_18000</version>
+            <version>1.7.1</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
