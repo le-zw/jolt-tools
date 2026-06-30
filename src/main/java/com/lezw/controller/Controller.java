@@ -8,6 +8,8 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.lezw.codeeditor.CodeEditor;
 import com.lezw.codeeditor.CodeMirrorEditor;
+import com.lezw.db.Sample;
+import com.lezw.db.SampleService;
 import com.lezw.transformjson.TransformJSONResource;
 import com.lezw.transformjson.dto.JoltSpecificationDTO;
 import com.lezw.transformjson.dto.ValidationDTO;
@@ -35,9 +37,11 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
     @FXML
@@ -76,6 +80,15 @@ public class Controller implements Initializable {
     @FXML
     private ChoiceBox<String> joltSample;
 
+    @FXML
+    private JFXButton saveSampleButton;
+
+    @FXML
+    private JFXButton deleteSampleButton;
+
+    private List<Sample> sampleList;
+    private Sample currentSample;
+
     private final CodeEditor spec = new CodeMirrorEditor();
     private final CodeEditor input = new CodeMirrorEditor();
     private final CodeEditor output = new CodeMirrorEditor();
@@ -107,6 +120,23 @@ public class Controller implements Initializable {
     TransformJSONResource transformJSONResource = new TransformJSONResource();
     HashMap<String, String> attributes = new HashMap<>();
 
+    /**
+     * 根据DSL名称选中对应的选项
+     */
+    private void selectDslByName(String dslName) {
+        if (dslName == null) {
+            dslChoice.getSelectionModel().select(1); // 默认Chain
+            return;
+        }
+        for (int i = 0; i < joltDsl.length; i++) {
+            if (joltDsl[i].equals(dslName)) {
+                dslChoice.getSelectionModel().select(i);
+                return;
+            }
+        }
+        dslChoice.getSelectionModel().select(1); // 默认Chain
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         specText.getChildren().add(spec.getWidget());
@@ -131,7 +161,11 @@ public class Controller implements Initializable {
         context.getChildren().remove(dialogPane);
 
         dslChoice.setItems(FXCollections.observableArrayList(joltDsl));
-        joltSample.setItems(FXCollections.observableArrayList(files));
+
+        // 从数据库加载样例
+        sampleList = SampleService.getAllJoltSamples();
+        List<String> sampleNames = sampleList.stream().map(Sample::getName).collect(Collectors.toList());
+        joltSample.setItems(FXCollections.observableArrayList(sampleNames));
         // 默认选中第2个选项
         dslChoice.getSelectionModel().select(1);
         // 监听选中事件
@@ -141,20 +175,32 @@ public class Controller implements Initializable {
                 });
         joltSample.getSelectionModel().selectedIndexProperty()
                 .addListener((ov, value, newValue) -> {
-                    // 默认选中Chain
-                    dslChoice.getSelectionModel().select(1);
-                    String val = files[newValue.intValue()];
-                    Map<String, Object> testUnit = JsonUtils.classpathToMap("/jolt/" + val +".json");
-                    input.setContent(JsonUtils.toPrettyJsonString(testUnit.get( "input" )), true);
-                    spec.setContent(JsonUtils.toPrettyJsonString(testUnit.get( "spec" )), true);
-                    if (!Objects.isNull(testUnit.get("attributes"))) {
-                        Map<String,Object> tmp = JsonUtils.jsonToMap(JsonUtils.toPrettyJsonString(testUnit.get( "attributes" )));
-                        tmp.forEach((k,v) ->{
-                            attributes.put(k, v.toString());
-                        });
+                    int index = newValue.intValue();
+                    if (index >= 0 && index < sampleList.size()) {
+                        currentSample = sampleList.get(index);
+                        Sample s = currentSample;
+
+                        // 切换DSL
+                        selectDslByName(s.getDsl());
+
+                        input.setContent(s.getInputContent(), true);
+                        spec.setContent(s.getSpecContent(), true);
+
+                        // 加载属性
+                        attributes.clear();
+                        if (StringUtils.isNotEmpty(s.getAttributes())) {
+                            try {
+                                Map<String, Object> tmp = JsonUtils.jsonToMap(s.getAttributes());
+                                tmp.forEach((k, v) -> {
+                                    attributes.put(k, v.toString());
+                                });
+                            } catch (Exception e) {
+                                // 忽略属性解析错误
+                            }
+                        }
+                        spec.autoFormat();
+                        input.autoFormat();
                     }
-                    spec.autoFormat();
-                    input.autoFormat();
                 });
         buttonTooltip();
     }
@@ -346,6 +392,123 @@ public class Controller implements Initializable {
     private String[] getFiles(){
         String[] list = {"JSON-key加前缀","JSON对象原样输出","JSON数组原样输出","JSON对象新增字段","JSON数组新增字段","JSON对象替换value","JSON数组替换key","JSON对象转数组","JSON提取value部分值","JSON过滤(QueryRecord)","String函数示例","复杂数组转简单数组"};
         return list;
+    }
+
+    /**
+     * 保存为样例
+     */
+    @FXML
+    protected void saveSample(ActionEvent event) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("保存为样例"));
+
+        VBox vBox = new VBox(10);
+        JFXTextField nameField = new JFXTextField();
+        nameField.setPromptText("请输入样例名称");
+        nameField.setPrefWidth(300);
+        vBox.getChildren().add(nameField);
+
+        content.setBody(vBox);
+
+        JFXButton saveBtn = new JFXButton("保存");
+        saveBtn.setStyle("-fx-background-color:#3986F7;-fx-pref-width: 80px;");
+
+        JFXButton cancelBtn = new JFXButton("取消");
+        cancelBtn.setStyle("-fx-background-color:#999;-fx-pref-width: 80px;");
+
+        JFXDialog dialog = new JFXDialog(dialogPane, content, JFXDialog.DialogTransition.CENTER, false);
+        dialog.setPrefWidth(400);
+
+        saveBtn.setOnAction((ActionEvent e) -> {
+            String name = nameField.getText();
+            if (StringUtils.isBlank(name)) {
+                Dialogs.showNoInfoDialog("提示", "请输入样例名称", dialogPane, saveBtn, context);
+                return;
+            }
+
+            // 保存到数据库
+            String attrs = attributes.isEmpty() ? null : JsonUtils.toPrettyJsonString(attributes);
+            String currentDsl = dslChoice.getValue();
+            SampleService.saveJoltSample(name, input.getContent(), spec.getContent(), currentDsl, attrs);
+
+            // 刷新样例列表
+            refreshSampleList();
+
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+            Dialogs.showYesInfoDialog("成功", "样例保存成功", dialogPane, saveBtn, context);
+        });
+
+        cancelBtn.setOnAction((ActionEvent e) -> {
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+        });
+
+        content.setActions(saveBtn, cancelBtn);
+
+        context.getChildren().add(dialogPane);
+        dialog.show();
+    }
+
+    /**
+     * 删除样例
+     */
+    @FXML
+    protected void deleteSample(ActionEvent event) {
+        if (currentSample == null) {
+            Dialogs.showNoInfoDialog("提示", "请先选择一个样例", dialogPane, deleteSampleButton, context);
+            return;
+        }
+
+        if (currentSample.isBuiltin()) {
+            Dialogs.showNoInfoDialog("提示", "内置样例不能删除", dialogPane, deleteSampleButton, context);
+            return;
+        }
+
+        // 确认对话框
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("确认删除"));
+        content.setBody(new Label("确定要删除样例 \"" + currentSample.getName() + "\" 吗？此操作不可恢复。"));
+
+        JFXButton confirmBtn = new JFXButton("删除");
+        confirmBtn.setStyle("-fx-background-color:#F44336;-fx-pref-width: 80px;");
+
+        JFXButton cancelBtn = new JFXButton("取消");
+        cancelBtn.setStyle("-fx-background-color:#999;-fx-pref-width: 80px;");
+
+        JFXDialog dialog = new JFXDialog(dialogPane, content, JFXDialog.DialogTransition.CENTER, false);
+        dialog.setPrefWidth(400);
+
+        confirmBtn.setOnAction((ActionEvent e) -> {
+            SampleService.deleteSample(currentSample.getId());
+            currentSample = null;
+
+            // 刷新样例列表
+            refreshSampleList();
+
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+            Dialogs.showYesInfoDialog("成功", "样例删除成功", dialogPane, confirmBtn, context);
+        });
+
+        cancelBtn.setOnAction((ActionEvent e) -> {
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+        });
+
+        content.setActions(confirmBtn, cancelBtn);
+
+        context.getChildren().add(dialogPane);
+        dialog.show();
+    }
+
+    /**
+     * 刷新样例列表
+     */
+    private void refreshSampleList() {
+        sampleList = SampleService.getAllJoltSamples();
+        List<String> sampleNames = sampleList.stream().map(Sample::getName).collect(Collectors.toList());
+        joltSample.setItems(FXCollections.observableArrayList(sampleNames));
     }
 //public static String[] getFiles() {
 //    List<String> filenames = new ArrayList<>();

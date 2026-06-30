@@ -60,7 +60,17 @@
                            <Font name="Fira Code Retina" size="13.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="joltSample" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="173.0" AnchorPane.leftAnchor="400.0" />
+                     <ChoiceBox fx:id="joltSample" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="150.0" AnchorPane.leftAnchor="400.0" />
+                     <JFXButton fx:id="saveSampleButton" mnemonicParsing="false" onAction="#saveSample" text="保存" AnchorPane.leftAnchor="560.0" AnchorPane.topAnchor="10.0" style="-fx-pref-width: 80px;">
+                         <graphic>
+                             <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="16.0" />
+                         </graphic>
+                     </JFXButton>
+                     <JFXButton fx:id="deleteSampleButton" mnemonicParsing="false" onAction="#deleteSample" text="删除" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="10.0" style="-fx-pref-width: 80px;">
+                         <graphic>
+                             <FontAwesomeIconView fill="WHITE" glyphName="TRASH_ALT" size="16.0" />
+                         </graphic>
+                     </JFXButton>
                     </children>
                 </AnchorPane>
               </children>

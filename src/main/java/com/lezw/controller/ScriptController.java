@@ -7,10 +7,13 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.lezw.codeeditor.CodeEditor;
 import com.lezw.codeeditor.CodeMirrorEditor;
+import com.lezw.db.Sample;
+import com.lezw.db.SampleService;
 import com.lezw.script.AccessibleExecuteScript;
 import com.lezw.script.AccessibleScriptingComponentHelper;
 import com.lezw.script.ExecuteScript;
 import com.lezw.script.ScriptingComponentUtils;
+import com.lezw.util.Dialogs;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import groovy.json.JsonBuilder;
@@ -46,6 +49,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * @author zhongwei.long
@@ -81,7 +85,16 @@ public class ScriptController implements Initializable {
     private ChoiceBox<String> scriptExample;
 
     @FXML
+    private JFXButton saveSampleButton;
+
+    @FXML
+    private JFXButton deleteSampleButton;
+
+    @FXML
     private ChoiceBox<String> processType;
+
+    private List<Sample> sampleList;
+    private Sample currentSample;
 
     @FXML
     private JFXTextArea scriptPath;
@@ -133,7 +146,12 @@ public class ScriptController implements Initializable {
 
         //初始化选择框
         scriptType.setItems(FXCollections.observableArrayList(type));
-        scriptExample.setItems(FXCollections.observableArrayList(files));
+
+        // 从数据库加载样例
+        sampleList = SampleService.getAllScriptSamples();
+        List<String> sampleNames = sampleList.stream().map(Sample::getName).collect(Collectors.toList());
+        scriptExample.setItems(FXCollections.observableArrayList(sampleNames));
+
         processType.setItems(FXCollections.observableArrayList(processors));
 
         // 默认选中第3个选项
@@ -146,10 +164,32 @@ public class ScriptController implements Initializable {
                 });
         scriptExample.getSelectionModel().selectedIndexProperty()
                 .addListener((ov, value, newValue) -> {
-                    String val = files[newValue.intValue()];
-                    String pos = val.substring(val.lastIndexOf(".")+1);
-                    scriptType.getSelectionModel().select(getScriptType(pos));
-                    scriptContent.setContent(getStringFromResource("/script/"+val), true);
+                    int index = newValue.intValue();
+                    if (index >= 0 && index < sampleList.size()) {
+                        currentSample = sampleList.get(index);
+                        Sample s = currentSample;
+
+                        // 切换Script Type
+                        scriptType.getSelectionModel().select(getScriptTypeByName(s.getScriptType()));
+
+                        // 切换Processor
+                        if (StringUtils.isNotEmpty(s.getProcessor())) {
+                            for (int i = 0; i < processors.length; i++) {
+                                if (processors[i].equals(s.getProcessor())) {
+                                    processType.getSelectionModel().select(i);
+                                    break;
+                                }
+                            }
+                        }
+
+                        // 加载Input
+                        if (StringUtils.isNotEmpty(s.getInputContent())) {
+                            input.setContent(s.getInputContent(), true);
+                        }
+
+                        // 加载Script
+                        scriptContent.setContent(s.getSpecContent(), true);
+                    }
                 });
         //默认选中第1个
         processType.getSelectionModel().select(0);
@@ -418,6 +458,22 @@ private static void outputFlowFilesForRelationship(Relationship relationship) {
         return list;
     }
 
+    /**
+     * 根据脚本类型名称获取索引
+     */
+    private int getScriptTypeByName(String scriptTypeName) {
+        if (scriptTypeName == null) return 2;
+        switch (scriptTypeName) {
+            case "Clojure": return 0;
+            case "ECMAScript": return 1;
+            case "Groovy": return 2;
+            case "lua": return 3;
+            case "python": return 4;
+            case "ruby": return 5;
+            default: return 2;
+        }
+    }
+
     private int getScriptType(String script){
         String postfix = script.substring(script.lastIndexOf(".")+1).toLowerCase();
         int type = 2;
@@ -432,6 +488,121 @@ private static void outputFlowFilesForRelationship(Relationship relationship) {
             default: break;
         }
         return type;
+    }
+
+    /**
+     * 保存为样例
+     */
+    @FXML
+    protected void saveSample(ActionEvent event) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("保存为样例"));
+
+        VBox vBox = new VBox(10);
+        JFXTextField nameField = new JFXTextField();
+        nameField.setPromptText("请输入样例名称");
+        nameField.setPrefWidth(300);
+        vBox.getChildren().add(nameField);
+
+        content.setBody(vBox);
+
+        JFXButton saveBtn = new JFXButton("保存");
+        saveBtn.setStyle("-fx-background-color:#3986F7;-fx-pref-width: 80px;");
+
+        JFXButton cancelBtn = new JFXButton("取消");
+        cancelBtn.setStyle("-fx-background-color:#999;-fx-pref-width: 80px;");
+
+        JFXDialog dialog = new JFXDialog(dialogPane, content, JFXDialog.DialogTransition.CENTER, false);
+        dialog.setPrefWidth(400);
+
+        saveBtn.setOnAction((ActionEvent e) -> {
+            String name = nameField.getText();
+            if (StringUtils.isBlank(name)) {
+                Dialogs.showNoInfoDialog("提示", "请输入样例名称", dialogPane, saveBtn, context);
+                return;
+            }
+
+            // 保存到数据库
+            SampleService.saveScriptSample(name, scriptContent.getContent(), scriptEngineName, processor, input.getContent());
+
+            // 刷新样例列表
+            refreshSampleList();
+
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+            Dialogs.showYesInfoDialog("成功", "样例保存成功", dialogPane, saveBtn, context);
+        });
+
+        cancelBtn.setOnAction((ActionEvent e) -> {
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+        });
+
+        content.setActions(saveBtn, cancelBtn);
+
+        context.getChildren().add(dialogPane);
+        dialog.show();
+    }
+
+    /**
+     * 删除样例
+     */
+    @FXML
+    protected void deleteSample(ActionEvent event) {
+        if (currentSample == null) {
+            Dialogs.showNoInfoDialog("提示", "请先选择一个样例", dialogPane, deleteSampleButton, context);
+            return;
+        }
+
+        if (currentSample.isBuiltin()) {
+            Dialogs.showNoInfoDialog("提示", "内置样例不能删除", dialogPane, deleteSampleButton, context);
+            return;
+        }
+
+        // 确认对话框
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("确认删除"));
+        content.setBody(new Label("确定要删除样例 \"" + currentSample.getName() + "\" 吗？此操作不可恢复。"));
+
+        JFXButton confirmBtn = new JFXButton("删除");
+        confirmBtn.setStyle("-fx-background-color:#F44336;-fx-pref-width: 80px;");
+
+        JFXButton cancelBtn = new JFXButton("取消");
+        cancelBtn.setStyle("-fx-background-color:#999;-fx-pref-width: 80px;");
+
+        JFXDialog dialog = new JFXDialog(dialogPane, content, JFXDialog.DialogTransition.CENTER, false);
+        dialog.setPrefWidth(400);
+
+        confirmBtn.setOnAction((ActionEvent e) -> {
+            SampleService.deleteSample(currentSample.getId());
+            currentSample = null;
+
+            // 刷新样例列表
+            refreshSampleList();
+
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+            Dialogs.showYesInfoDialog("成功", "样例删除成功", dialogPane, confirmBtn, context);
+        });
+
+        cancelBtn.setOnAction((ActionEvent e) -> {
+            dialog.close();
+            context.getChildren().remove(dialogPane);
+        });
+
+        content.setActions(confirmBtn, cancelBtn);
+
+        context.getChildren().add(dialogPane);
+        dialog.show();
+    }
+
+    /**
+     * 刷新样例列表
+     */
+    private void refreshSampleList() {
+        sampleList = SampleService.getAllScriptSamples();
+        List<String> sampleNames = sampleList.stream().map(Sample::getName).collect(Collectors.toList());
+        scriptExample.setItems(FXCollections.observableArrayList(sampleNames));
     }
 
     private String getStringFromResource(String path){

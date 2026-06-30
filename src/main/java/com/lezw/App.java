@@ -27,7 +27,7 @@ public class App extends Application {
         // 设置主窗口的标题和图标
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("DevTools - Main");
-//        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/icon.png"))));
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/icon.png"))));
 
         // 注册快捷键
         registerShortcut(primaryStage);
